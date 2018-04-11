@@ -14,29 +14,30 @@ require('admin/acf_fields.php');
 require('admin/register-shortcodes.php');
 
 
-/**
- * Open grid
- */
- 
-function open_grid($args=0){
-    $grid = '<div class="uk-container uk-container-center">';
-    $grid .= '<div class="uk-grid" data-uk-grid-margin>';
-    
-    echo $grid;
-}
-
 
 /**
- * Close grid
+ * Make grid wrapper
+ * usage: gridwrapper({open/close, class})
  */
- 
-function close_grid(){
-    $grid = '</div>';
-    $grid .= '</div>';
-    
-    echo $grid;
-}
 
+function gridwrapper($args=0){
+    
+    if( $args[1] ) {
+        $class = $args[1];
+    }
+    
+    if( $args[0] == 'open' ){
+        $grid = '<div class="uk-container uk-container-center '.$class.'">';
+        $grid .= '<div class="uk-grid" data-uk-grid-margin>';
+    }
+    
+    if( $args[0] == 'close' ){
+        $grid = '</div>';
+        $grid .= '</div>';
+    }
+    
+
+}
 
 
 
