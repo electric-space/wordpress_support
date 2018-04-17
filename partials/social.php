@@ -9,7 +9,7 @@
         {
            $account = array_filter( explode('/', $link) );
             
-            $account = str_ireplace( array('www.','.com'), '', $account[2]);
+            $account = str_ireplace( array('www.','.com','.co.uk'), '', $account[2]);
            
             echo '<li class="'.$account.'"><a href="'.$link.'" class="social_icons uk-icon-'.$account.' fade" target="_blank"></a></li>';
         
