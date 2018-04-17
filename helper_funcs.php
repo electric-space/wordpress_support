@@ -209,3 +209,28 @@ function my_login_head() {
 add_action("login_head", "my_login_head");
 
 
+
+/**
+ * Removes the embeded posts option
+ */
+
+function my_deregister_scripts(){
+ wp_dequeue_script( 'wp-embed' );
+}
+add_action( 'wp_footer', 'my_deregister_scripts' );
+
+
+
+/**
+ * Adds content editor to News page
+ */
+ 
+add_action( 'edit_form_after_title', 'rgc_posts_page_edit_form' );
+function rgc_posts_page_edit_form( $post ) {
+	$posts_page = get_option( 'page_for_posts' );
+	if ( $posts_page === $post->ID ) {
+		add_post_type_support( 'page', 'editor' );
+	}
+}
+
+
